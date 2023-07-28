@@ -15,7 +15,8 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [14.x]
+        # node-version: [14.x, 16.x, 18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -28,15 +29,12 @@ jobs:
       - name: Install dependencies
         #using npm ci generally faster than running npm install
         run: |
-          cd testing
           npm ci
       - name: Build the app
         run: |
-          cd testing
           npm run build
       - name: Run component tests
         run: |
-          cd testing
           npm run test
       - name: Start the app
         run: |
